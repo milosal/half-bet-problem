@@ -23,7 +23,6 @@ def one_iter(balance):
 
 def visualize(balances):
     x = np.arange(0, ITERATIONS + 1)
-    print(x)
     y = balances
     plt.plot(x, y)
     plt.show()
