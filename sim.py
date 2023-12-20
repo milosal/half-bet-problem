@@ -4,6 +4,8 @@ import matplotlib
 
 START_BALANCE = 100
 WIN_CHANCE = .5
+PAYOFF_MULTIPLIER = 2
+LOSS_MULTIPLIER = 0.5
 
 def main():
     balance = START_BALANCE
@@ -14,7 +16,8 @@ def main():
 
 
 def one_iter(balance):
-    pass
+    result = random.choice([PAYOFF_MULTIPLIER, LOSS_MULTIPLIER])
+    return balance * result
 
 def visualize(balances):
     pass
