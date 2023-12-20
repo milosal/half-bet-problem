@@ -1,6 +1,7 @@
 import random
 import statistics
-import matplotlib as plt
+import matplotlib.pyplot as plt
+import numpy as np
 
 START_BALANCE = 100
 WIN_CHANCE = .5
@@ -10,19 +11,22 @@ ITERATIONS = 10
 
 def main():
     balance = START_BALANCE
-    balances = [balance]
-    for _ in range(ITERATIONS):
-        new_balance = one_iter(balances[-1])
-        balances.append(new_balance)
+    balances = []
+    for _ in range(ITERATIONS + 1):
+        balances.append(balance)
+        balance = one_iter(balances[-1])
+    visualize(balances)
 
 def one_iter(balance):
     result = random.choice([PAYOFF_MULTIPLIER, LOSS_MULTIPLIER])
     return balance * result
 
 def visualize(balances):
-    fig, ax = plt.subplots()
-    
-    ax.plot([i for i in range(len(balances))], [balances])
+    x = np.arange(0, ITERATIONS + 1)
+    print(x)
+    y = balances
+    plt.plot(x, y)
+    plt.show()
 
 if __name__ == "__main__":
     main()
