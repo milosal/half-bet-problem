@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 START_BALANCE = 10000
-START_BET = 1
+START_BET = 5
 WIN_CHANCE = .5
 PAYOFF_MULTIPLIER = 2
 LOSS_MULTIPLIER = 0
-ITERATIONS = 10000
+ITERATIONS = 1000
 MASS_RUN_TIMES = 1000
 
 # Simplest working version of betting sim
@@ -57,14 +57,19 @@ def mass_run():
         # Log the final balance
         log.append(balances[-1])
 
+    print()
     max_val = max(log)
     median_val = statistics.median(log)
     mode_val = statistics.mode(log)
     print(f"max: {max_val}, median: {median_val}, mode: {mode_val}")
 
     zero_occur = log.count(0)
-    print(f"percent chance of losing everything is {(zero_occur / len(log)) * 100}")
+    print(f"percent chance of losing everything is {round((zero_occur / len(log)) * 100, 1)}%")
 
+    average_profit = statistics.mean(log) - START_BALANCE
+    print(f"average profit of this bet sequence is {round(average_profit, 2)}")
+
+    print()
     visualize_log(log)
     return log
 
