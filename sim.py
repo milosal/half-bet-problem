@@ -7,7 +7,7 @@ START_BALANCE = 100
 START_BET = 1
 WIN_CHANCE = .5
 PAYOFF_MULTIPLIER = 2
-LOSS_MULTIPLIER = 0.5
+LOSS_MULTIPLIER = 0
 ITERATIONS = 100
 
 # Simplest working version of betting sim
@@ -37,7 +37,7 @@ def increasing_bet():
             i = START_BET
         else:
             i *= 2
-        balance += returned_money
+        balance = balance - amount_at_stake + returned_money
     
     visualize(balances)
         
