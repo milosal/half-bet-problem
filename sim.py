@@ -8,7 +8,7 @@ START_BET = 1
 WIN_CHANCE = .5
 PAYOFF_MULTIPLIER = 2
 LOSS_MULTIPLIER = 0.5
-ITERATIONS = 40
+ITERATIONS = 100
 
 # Simplest working version of betting sim
 def basic():
@@ -38,6 +38,8 @@ def increasing_bet():
         else:
             i *= 2
         balance += returned_money
+    
+    visualize(balances)
         
 # One win or loss bet with balance resolution
 def one_iter(money):
@@ -52,4 +54,4 @@ def visualize(balances):
     plt.show()
 
 if __name__ == "__main__":
-    basic()
+    increasing_bet()
